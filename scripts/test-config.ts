@@ -1,7 +1,10 @@
-import * as pp from "puppeteer";
+import * as s from "../src/setup";
 
-(async () => {
-  const browser = await pp.launch();
+s.run(async () => {
+  const config = await s.resolveConfig();
+  s.infoConfig(config);
+  const browser = await s.setupBrowser(config);
+
   const page = await browser.newPage();
   await page.goto("https://example.com");
 
@@ -10,7 +13,4 @@ import * as pp from "puppeteer";
   console.log(`[success] https://example.com - ${title}`);
 
   await browser.close();
-})().catch((err) => {
-  process.exitCode = 1;
-  console.error(err);
 });
