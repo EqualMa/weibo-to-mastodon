@@ -1,3 +1,6 @@
+.chromium-profile/
+.images/
+.w2mrc.json
 /.yarn/*
 !/.yarn/patches
 !/.yarn/plugins

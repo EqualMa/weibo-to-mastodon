@@ -1,4 +1,17 @@
-export interface TopicStruct {}
+export interface TopicStruct {
+  /** text without starting and ending hash */
+  topic_title: string;
+}
+
+export interface UrlStruct {
+  url_title: string;
+  short_url: string;
+  long_url: string;
+  url_type: number;
+  url_type_pic: string;
+  page_id: string;
+  object_type: "place" | "" | (string & {});
+}
 
 export interface PicInfo {
   largest: {
@@ -6,12 +19,10 @@ export interface PicInfo {
   };
 }
 
-export interface RetweetedStatus {}
-
 export interface User {
   avatar_hd: string;
   avatar_large: string;
-  /** ascii id */
+  /** ascii id, may changed by user */
   domain: string;
   id: number;
   /** String(id) */
@@ -19,6 +30,11 @@ export interface User {
   /** /u/${id} */
   profile_url: string;
   screen_name: string;
+}
+
+export interface PageInfo {
+  page_id: string;
+  object_type: "video" | "article" | (string & {});
 }
 
 export interface MBlog {
@@ -32,9 +48,17 @@ export interface MBlog {
   text: string;
   text_raw: string;
   topic_struct?: TopicStruct[];
+  url_struct?: UrlStruct[];
   pic_ids: string[];
   /** pic_id to info */
   pic_infos?: Record<string, PicInfo>;
   retweeted_status?: MBlog;
   user: User;
+  page_info?: PageInfo;
+}
+
+export interface LongMBlog {
+  longTextContent: string;
+  topic_struct?: TopicStruct[];
+  url_struct?: UrlStruct[];
 }
