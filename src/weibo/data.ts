@@ -201,6 +201,11 @@ export class MBlogContent {
     } else if (this.mediaCard) {
       return { url: this.mediaCard.shortUrl, title: this.mediaCard.title };
     } else {
+      for (const b of this.blocks) {
+        if (b.type === "url") {
+          return { url: b.href, title: b.content };
+        }
+      }
       return null;
     }
   }
