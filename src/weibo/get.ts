@@ -33,5 +33,9 @@ export async function getLatestWeiboListOfUser({
 
   list.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
 
-  return list.slice(0, limit);
+  if (list.length > limit) {
+    return list.slice(list.length - limit);
+  } else {
+    return list;
+  }
 }
