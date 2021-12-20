@@ -1,6 +1,9 @@
 {
   "name": "weibo-to-mastodon",
   "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "w2m-sync": "ts-node scripts/sync.ts"
+  },
   "devDependencies": {
     "@types/luxon": "^2.0.8",
     "@types/node": "^16.11.12",
