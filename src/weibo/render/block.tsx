@@ -1,3 +1,4 @@
+import * as React from "react";
 import { MBlogBlock } from "../data";
 
 export default function Block({ block }: { block: MBlogBlock }) {
@@ -40,7 +41,25 @@ export default function Block({ block }: { block: MBlogBlock }) {
           {block.content}
         </a>
       );
+    case "text":
+      if (!block.textRaw.includes("\n")) {
+        return <>{block.textRaw}</>;
+      } else {
+        const all = block.textRaw.split("\n");
+        const last = all[all.length - 1];
+        return (
+          <>
+            {all.slice(0, -1).map((t, i) => (
+              <React.Fragment key={i}>
+                {t}
+                <br />
+              </React.Fragment>
+            ))}
+            {last}
+          </>
+        );
+      }
     default:
-      return <>{block.textRaw}</>;
+      throw new Error(`Unknown WeiboContentBlock ${JSON.stringify(block)}`);
   }
 }
