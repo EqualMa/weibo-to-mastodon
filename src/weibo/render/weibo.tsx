@@ -9,6 +9,7 @@ export default function Weibo({
   weibo: MBlog;
   shouldSeeAllImagesAtOriginalLink?: "partially-shown" | boolean;
 }) {
+  const isoCreatedAt = weibo.createdAt.toISOString();
   const displayCreatedAt = lx.DateTime.fromJSDate(weibo.createdAt)
     .setZone("UTC+8")
     .toFormat("yyyy-LL-dd TTT");
@@ -16,23 +17,18 @@ export default function Weibo({
   const mainLink = weibo.content.mainLink;
 
   return (
-    <div
+    <article
       className={`w2m-weibo w2m-weibo--user-${weibo.user.id} w2m-weibo--mblog-${weibo.id}`}
     >
       <div className="w2m-weibo__original">
-        {mainLink ? (
-          <>
-            <a
-              href={mainLink.url}
-              className="w2m-weibo__original__main-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {mainLink.title}
-            </a>
-            <br />
-          </>
-        ) : null}
+        {/* make sure mastodon generate the correct media card */}
+        <a
+          href={mainLink ? mainLink.url : weibo.url}
+          className="w2m-weibo__original__main-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          hidden
+        />
         <a
           href={weibo.user.url}
           className="w2m-weibo__original__user"
@@ -49,7 +45,13 @@ export default function Weibo({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {displayCreatedAt}
+          <time
+            dateTime={isoCreatedAt}
+            itemProp="datePublished"
+            {...{ pubdate: "" }}
+          >
+            {displayCreatedAt}
+          </time>
         </a>
       </div>
       <div className="w2m-weibo__content">
@@ -76,13 +78,16 @@ export default function Weibo({
         </div>
       ) : null}
       {weibo.content.retweeted ? (
-        <div className="w2m-weibo__retweet">
+        <blockquote
+          cite={weibo.content.retweeted.url}
+          className="w2m-weibo__retweet"
+        >
           <Weibo
             weibo={weibo.content.retweeted}
             shouldSeeAllImagesAtOriginalLink
           />
-        </div>
+        </blockquote>
       ) : null}
-    </div>
+    </article>
   );
 }
