@@ -21,6 +21,7 @@ export default function Block({ block }: { block: MBlogBlock }) {
           src={block.imageSrc}
           alt={block.textRaw}
           title={block.textRaw}
+          style={{ height: "1em" }}
         />
       );
     case "url":
@@ -36,6 +37,7 @@ export default function Block({ block }: { block: MBlogBlock }) {
               className="w2m-weibo__content__url__icon"
               src={block.iconSrc}
               alt={block.content}
+              style={{ height: "1em" }}
             />
           ) : null}
           {block.content}
