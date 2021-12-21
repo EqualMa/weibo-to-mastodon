@@ -29,9 +29,16 @@ export interface WeiboToMastodonConfig extends SetupCtxConfig {
 
 export type WeiboToMastodonConfigInput = Partial<WeiboToMastodonConfig>;
 
+async function parseJsonc<T>(txt: string): Promise<T> {
+  const m = await import("jsonc-parser");
+  return m.parse(txt);
+}
+
 export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
   const txt = await fsp.readFile(".w2mrc.json", "utf-8").catch((_err) => "");
-  const json: WeiboToMastodonConfigInput = txt.trim() ? JSON.parse(txt) : {};
+  const json: WeiboToMastodonConfigInput = txt.trim()
+    ? await parseJsonc(txt)
+    : {};
   //   TODO: validate
 
   const {
