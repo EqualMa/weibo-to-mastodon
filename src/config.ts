@@ -1,13 +1,6 @@
-import { PuppeteerLib } from "./ctx";
 import { OperationDelayOption } from "./delay";
+import { SetupBrowserConfig } from "./browser";
 import * as fsp from "fs/promises";
-
-export interface SetupBrowserConfig {
-  puppeteer: "puppeteer" | "puppeteer-core";
-  launch: Parameters<PuppeteerLib["launch"]>[0] | undefined;
-}
-
-export type SetupBrowserConfigInput = Partial<SetupBrowserConfig>;
 
 export interface SetupCtxConfig extends SetupBrowserConfig {
   /** default to `"random"` */

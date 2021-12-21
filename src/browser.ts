@@ -1,6 +1,17 @@
-import { SetupBrowserConfig } from "./config";
-import { Browser, PuppeteerLib } from "./ctx";
+import {
+  Browser,
+  PuppeteerLaunchParam,
+  PuppeteerLib,
+  PuppeteerModuleName,
+} from "./puppeteer-common";
 import * as fsp from "fs/promises";
+
+export interface SetupBrowserConfig {
+  puppeteer: PuppeteerModuleName;
+  launch: PuppeteerLaunchParam | undefined;
+}
+
+export type SetupBrowserConfigInput = Partial<SetupBrowserConfig>;
 
 export default async function setupBrowser({
   puppeteer = "puppeteer-core",

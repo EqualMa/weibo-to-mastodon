@@ -1551,26 +1551,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "puppeteer@npm:13.0.0"
-  dependencies:
-    debug: 4.3.2
-    devtools-protocol: 0.0.937139
-    extract-zip: 2.0.1
-    https-proxy-agent: 5.0.0
-    node-fetch: 2.6.5
-    pkg-dir: 4.2.0
-    progress: 2.0.3
-    proxy-from-env: 1.1.0
-    rimraf: 3.0.2
-    tar-fs: 2.1.1
-    unbzip2-stream: 1.4.3
-    ws: 8.2.3
-  checksum: fc6432ae3f13a0b5300ef9b62d58ad0050e80263f8bf6b0c8ee8dec4277210bf4da08c59be9cf10408c830420ebe43b9a517c2d0c3733ec0629ec1ff7510172c
-  languageName: node
-  linkType: hard
-
 "quick-lru@npm:^5.1.1":
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
@@ -1968,13 +1948,17 @@ __metadata:
     luxon: ^2.2.0
     megalodon: ^3.6.7
     prettier: ^2.5.1
-    puppeteer: ^13.0.0
     puppeteer-core: ^13.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
     ts-node: ^10.4.0
     typescript: ^4.5.2
     yaml: ^1.10.2
+  peerDependencies:
+    puppeteer-core: ^13.0.0
+  peerDependenciesMeta:
+    puppeteer-core:
+      optional: true
   languageName: unknown
   linkType: soft
 
