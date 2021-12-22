@@ -1,4 +1,4 @@
-import * as s from "../src/setup";
+import * as s from "../setup";
 
 s.run(async () => {
   const config = await s.resolveConfig();
