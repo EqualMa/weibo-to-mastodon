@@ -1,5 +1,5 @@
-import * as s from "../src/setup";
-import syncWeiboToMastodon from "../src/weibo/sync";
+import * as s from "../setup";
+import syncWeiboToMastodon from "../weibo/sync";
 
 async function main() {
   const { syncList, defaultMastodonBaseUrl, ...config } =

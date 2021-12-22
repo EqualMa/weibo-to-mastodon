@@ -2,13 +2,19 @@
   "name": "weibo-to-mastodon",
   "packageManager": "yarn@3.1.1",
   "scripts": {
-    "w2m-sync": "ts-node scripts/sync.ts"
+    "build": "cross-env NODE_ENV=production swc src -d dist",
+    "w2m-sync": "node dist/scripts/sync.js",
+    "w2m-sync:ts": "ts-node src/scripts/sync.ts"
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.122",
     "@types/luxon": "^2.0.8",
     "@types/node": "^16.11.12",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "browserslist": "^4.19.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.4.1",
     "prettier": "^2.5.1",
     "puppeteer-core": "^13.0.0",
@@ -17,6 +23,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
+    "core-js": "^3.20.0",
     "got": "11",
     "jsonc-parser": "^3.0.0",
     "luxon": "^2.2.0",
