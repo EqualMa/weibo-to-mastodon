@@ -1,12 +1,14 @@
 {
   "name": "w2m",
+  "version": "0.1.0",
   "packageManager": "yarn@3.1.1",
   "scripts": {
     "test": "yarn tsc --noEmit",
     "clean": "rimraf dist",
-    "build": "yarn run clean && yarn run compile && yarn run build-dts",
+    "build": "yarn run clean && yarn run compile && yarn run build-dts && yarn run build-pkg",
     "compile": "cross-env NODE_ENV=production swc src -d dist",
     "build-dts": "yarn tsc -p tsconfig.prod.json --declaration --emitDeclarationOnly --outDir dist",
+    "build-pkg": "yarn ts-node scripts/cp-pkg.ts",
     "w2m-sync": "node dist/scripts/sync.js",
     "w2m-sync:ts": "ts-node src/scripts/sync.ts"
   },
