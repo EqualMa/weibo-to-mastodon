@@ -34,9 +34,13 @@
     "yaml": "^1.10.2"
   },
   "peerDependencies": {
+    "puppeteer": "^13.0.0",
     "puppeteer-core": "^13.0.0"
   },
   "peerDependenciesMeta": {
+    "puppeteer": {
+      "optional": true
+    },
     "puppeteer-core": {
       "optional": true
     }
