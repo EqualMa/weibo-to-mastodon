@@ -6368,6 +6368,9 @@ __metadata:
       optional: true
     puppeteer-core:
       optional: true
+  bin:
+    w2m-sync: ./scripts/sync.js
+    w2m-test-config: ./scripts/test-config.js
   languageName: unknown
   linkType: soft
 
