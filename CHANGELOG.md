@@ -1,3 +1,10 @@
+# [1.0.0-alpha.2](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2021-12-23)
+
+
+### Features
+
+* add bin w2m-sync and w2m-test-config ([4f436fe](https://github.com/EqualMa/weibo-to-mastodon/commit/4f436feb80322ee620e5af9e7772c43090ac09b7))
+
 # 1.0.0-alpha.1 (2021-12-23)
 
 
