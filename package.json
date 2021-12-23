@@ -1,6 +1,6 @@
 {
   "name": "w2m",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.1",
   "packageManager": "yarn@3.1.1",
   "scripts": {
     "test": "yarn tsc --noEmit",
