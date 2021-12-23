@@ -11,6 +11,17 @@ export interface SetupCtxConfig extends SetupBrowserConfig {
 const DEFAULT_PUPPETEER: CustomPuppeteerModuleName =
   process.env["W2M_DEFAULT_PUPPETEER"] || "puppeteer-core";
 
+const DEFAULT_LAUNCH_EXECUTABLE_PATH =
+  process.env["W2M_DEFAULT_LAUNCH_EXECUTABLE_PATH"];
+
+/**
+ * List of args separated by any whitespace,
+ * which will be prepended to launch.args.
+ */
+const PREFIX_LAUNCH_ARGS = process.env["W2M_PREFIX_LAUNCH_ARGS"]
+  ?.split(/\s+/)
+  .filter(Boolean);
+
 export interface WeiboToMastodonConfig extends SetupCtxConfig {
   defaultMastodonBaseUrl: string | undefined;
   syncList: {
@@ -41,12 +52,20 @@ export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
   const {
     //
     puppeteer = DEFAULT_PUPPETEER,
-    launch,
+    launch: _launch,
     delay = "random",
     defaultMastodonBaseUrl,
     syncList = [],
     stopAfterFailed = false,
   } = json;
+
+  const launch = { ..._launch };
+
+  if (DEFAULT_LAUNCH_EXECUTABLE_PATH)
+    launch.executablePath ??= DEFAULT_LAUNCH_EXECUTABLE_PATH;
+
+  if (PREFIX_LAUNCH_ARGS && PREFIX_LAUNCH_ARGS.length > 0)
+    launch.args = [...PREFIX_LAUNCH_ARGS, ...(launch.args || [])];
 
   return {
     puppeteer,
@@ -99,7 +118,7 @@ export function infoConfig(config: WeiboToMastodonConfig) {
     console.info(`[syncList] empty`);
   } else {
     console.info(`[syncList] ${syncList.length} items`);
-  console.table(
+    console.table(
       syncList.map((s) => ({
         "weibo.userId": s.weibo.userId,
         "mastodon.baseUrl": s.mastodon.baseUrl,
@@ -118,7 +137,7 @@ export function infoConfig(config: WeiboToMastodonConfig) {
 
 function objToKvList(obj: {}) {
   return Object.entries(obj).map(([key, value]) => ({
-      key,
-      value: typeof value === "object" && value ? JSON.stringify(value) : value,
+    key,
+    value: typeof value === "object" && value ? JSON.stringify(value) : value,
   }));
 }
