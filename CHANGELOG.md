@@ -1,3 +1,11 @@
+# [1.0.0-alpha.4](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2021-12-23)
+
+
+### Features
+
+* env var W2M_DEFAULT_LAUNCH_EXECUTABLE_PATH and W2M_PREFIX_LAUNCH_ARGS ([192d397](https://github.com/EqualMa/weibo-to-mastodon/commit/192d39738a58bceeb01539c5f9ef901ef912a4bc))
+* w2m-test-config better output ([4a9ae59](https://github.com/EqualMa/weibo-to-mastodon/commit/4a9ae59073345c72333f9d4c92c336d6ed81ce44))
+
 # [1.0.0-alpha.3](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2021-12-23)
 
 
