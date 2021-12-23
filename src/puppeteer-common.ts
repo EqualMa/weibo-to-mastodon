@@ -7,6 +7,8 @@ interface KnownPuppeteerLibs {
 
 export type PuppeteerModuleName = keyof KnownPuppeteerLibs;
 
+export type CustomPuppeteerModuleName = PuppeteerModuleName | (string & {});
+
 export type AvailablePuppeteerModuleName = {
   [K in PuppeteerModuleName]: any extends KnownPuppeteerLibs[K] ? never : K;
 }[PuppeteerModuleName];
