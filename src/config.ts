@@ -59,11 +59,66 @@ export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
 }
 
 export function infoConfig(config: WeiboToMastodonConfig) {
+  const {
+    puppeteer,
+    launch,
+    defaultMastodonBaseUrl,
+    syncList,
+    ...otherConfigs
+  } = config;
   console.info("Using WeiboToMastodonConfig:");
+  console.info(
+    `[puppeteer] import puppeteer from ${JSON.stringify(puppeteer)}`
+  );
+  console.info(`[launch]${launch ? "" : ` ${String(launch)}`}`);
+  if (launch) {
+    const { args, ...otherLaunchOptions } = launch;
+
+    if (!args) console.info(`[launch.args] ${String(args)}`);
+    else if (args.length === 0) {
+      console.info(`[launch.args] empty array`);
+    } else {
+      console.info(`[launch.args] ${args.length} items`);
+      for (const arg of args) {
+        console.info(` * ${arg}`);
+      }
+    }
+
+    const kvList = objToKvList(otherLaunchOptions);
+
+    if (kvList.length > 0) {
+      console.info(`[launch.*]`);
+      console.table(kvList);
+    }
+  }
+
+  if (defaultMastodonBaseUrl)
+    console.info(`[defaultMastodonBaseUrl] ${defaultMastodonBaseUrl}`);
+
+  if (syncList.length === 0) {
+    console.info(`[syncList] empty`);
+  } else {
+    console.info(`[syncList] ${syncList.length} items`);
   console.table(
-    Object.entries(config).map(([key, value]) => ({
+      syncList.map((s) => ({
+        "weibo.userId": s.weibo.userId,
+        "mastodon.baseUrl": s.mastodon.baseUrl,
+        "mastodon.checkHistory": s.mastodon.checkHistory,
+        "mastodon.accessToken": s.mastodon.accessToken ? "***" : "",
+      }))
+    );
+  }
+
+  const otherKv = objToKvList(otherConfigs);
+  if (otherKv.length > 0) {
+    console.info(`[...otherConfigs]`);
+    console.table(otherKv);
+  }
+}
+
+function objToKvList(obj: {}) {
+  return Object.entries(obj).map(([key, value]) => ({
       key,
       value: typeof value === "object" && value ? JSON.stringify(value) : value,
-    }))
-  );
+  }));
 }
