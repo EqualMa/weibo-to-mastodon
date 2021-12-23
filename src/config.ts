@@ -1,11 +1,15 @@
 import { OperationDelayOption } from "./delay";
 import { SetupBrowserConfig } from "./browser";
 import * as fsp from "fs/promises";
+import { CustomPuppeteerModuleName } from "./puppeteer-common";
 
 export interface SetupCtxConfig extends SetupBrowserConfig {
   /** default to `"random"` */
   delay: OperationDelayOption;
 }
+
+const DEFAULT_PUPPETEER: CustomPuppeteerModuleName =
+  process.env["W2M_DEFAULT_PUPPETEER"] || "puppeteer-core";
 
 export interface WeiboToMastodonConfig extends SetupCtxConfig {
   defaultMastodonBaseUrl: string | undefined;
@@ -36,7 +40,7 @@ export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
 
   const {
     //
-    puppeteer = "puppeteer-core",
+    puppeteer = DEFAULT_PUPPETEER,
     launch,
     delay = "random",
     defaultMastodonBaseUrl,

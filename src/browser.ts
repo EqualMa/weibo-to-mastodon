@@ -6,9 +6,6 @@ import {
 } from "./puppeteer-common";
 import * as fsp from "fs/promises";
 
-const DEFAULT_PUPPETEER: CustomPuppeteerModuleName =
-  process.env["W2M_DEFAULT_PUPPETEER"] || "puppeteer-core";
-
 export interface SetupBrowserConfig {
   puppeteer: CustomPuppeteerModuleName;
   launch: PuppeteerLaunchParam | undefined;
@@ -17,7 +14,7 @@ export interface SetupBrowserConfig {
 export type SetupBrowserConfigInput = Partial<SetupBrowserConfig>;
 
 export default async function setupBrowser({
-  puppeteer = DEFAULT_PUPPETEER,
+  puppeteer,
   launch,
 }: SetupBrowserConfig): Promise<Browser> {
   const m = await import(puppeteer);
