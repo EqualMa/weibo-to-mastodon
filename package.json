@@ -2,6 +2,10 @@
   "name": "w2m",
   "version": "1.0.0-alpha.1",
   "packageManager": "yarn@3.1.1",
+  "bin": {
+    "w2m-sync": "./scripts/sync.js",
+    "w2m-test-config": "./scripts/test-config.js"
+  },
   "scripts": {
     "test": "yarn tsc --noEmit",
     "clean": "rimraf dist",

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as s from "../setup";
 
 s.run(async () => {

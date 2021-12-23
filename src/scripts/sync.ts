@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as s from "../setup";
 import syncWeiboToMastodon from "../weibo/sync";
 
