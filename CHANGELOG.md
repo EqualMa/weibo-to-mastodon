@@ -1,3 +1,10 @@
+# [1.0.0-alpha.3](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2021-12-23)
+
+
+### Bug Fixes
+
+* env var W2M_DEFAULT_PUPPETEER not respected ([8d12c5e](https://github.com/EqualMa/weibo-to-mastodon/commit/8d12c5e8bc7200c223df0bce9fd271947aaf3601))
+
 # [1.0.0-alpha.2](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2021-12-23)
 
 
