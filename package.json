@@ -1,13 +1,19 @@
 {
-  "name": "weibo-to-mastodon",
+  "name": "w2m",
   "packageManager": "yarn@3.1.1",
   "scripts": {
     "test": "yarn tsc --noEmit",
-    "build": "cross-env NODE_ENV=production swc src -d dist",
+    "clean": "rimraf dist",
+    "build": "yarn run clean && yarn run compile && yarn run build-dts",
+    "compile": "cross-env NODE_ENV=production swc src -d dist",
+    "build-dts": "yarn tsc -p tsconfig.prod.json --declaration --emitDeclarationOnly --outDir dist",
     "w2m-sync": "node dist/scripts/sync.js",
     "w2m-sync:ts": "ts-node src/scripts/sync.ts"
   },
   "devDependencies": {
+    "@semantic-release-plus/docker": "^3.1.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.122",
     "@types/luxon": "^2.0.8",
@@ -19,6 +25,8 @@
     "eslint": "^8.4.1",
     "prettier": "^2.5.1",
     "puppeteer-core": "^13.0.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^18.0.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
@@ -31,8 +39,7 @@
     "luxon": "^2.2.0",
     "megalodon": "^3.6.7",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "yaml": "^1.10.2"
+    "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "puppeteer": "^13.0.0",
