@@ -470,28 +470,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release-plus/core@npm:*":
-  version: 1.0.0
-  resolution: "@semantic-release-plus/core@npm:1.0.0"
-  peerDependencies:
-    semantic-release-plus: ^19.0.0
-  checksum: c6800fa2d2a42111f988da6ba0de4f83dae261f73f741d3bccf46a95031eaa3d2967b10a6841e91d15353335e83fe4e669ceab00225396f089ecf2916a75ee78
-  languageName: node
-  linkType: hard
-
-"@semantic-release-plus/docker@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@semantic-release-plus/docker@npm:3.1.0"
-  dependencies:
-    "@semantic-release-plus/core": "*"
-    execa: 5.1.1
-    semver: 7.3.5
-  peerDependencies:
-    semantic-release-plus: ^19.0.0
-  checksum: c9cc01aa7653ebd861e1ef398071baac2faf4bb1310d45fa3daa8466bca4e6169ebf20d4c7c347f5772a3c54082793f7eda490006ce6679c00c3e878c280c802
-  languageName: node
-  linkType: hard
-
 "@semantic-release/changelog@npm:^6.0.1":
   version: 6.0.1
   resolution: "@semantic-release/changelog@npm:6.0.1"
@@ -2423,7 +2401,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:5.1.1, execa@npm:^5.0.0":
+"execa@npm:^5.0.0":
   version: 5.1.1
   resolution: "execa@npm:5.1.1"
   dependencies:
@@ -5522,7 +5500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:*, semver@npm:7.3.5, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.1.3, semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5":
+"semver@npm:*, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.1.3, semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5":
   version: 7.3.5
   resolution: "semver@npm:7.3.5"
   dependencies:
@@ -6333,7 +6311,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "w2m@workspace:."
   dependencies:
-    "@semantic-release-plus/docker": ^3.1.0
     "@semantic-release/changelog": ^6.0.1
     "@semantic-release/git": ^10.0.1
     "@swc/cli": ^0.1.55
