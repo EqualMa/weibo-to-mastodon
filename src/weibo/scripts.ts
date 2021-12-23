@@ -30,7 +30,9 @@ export async function getBlogs({
   const res: { ok: number; data: { list: ip.MBlog[] } } = await resp.json();
 
   if (res.ok !== 1) {
-    throw new Error(`fetch ${url} ok=${res.ok}`);
+    throw new Error(
+      `fetch ${url} ok=${res.ok} resp.body=${JSON.stringify(res)}`
+    );
   }
 
   async function getFullBlogInfo(m: ip.MBlog) {
