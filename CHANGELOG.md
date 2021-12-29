@@ -1,3 +1,10 @@
+# [1.0.0-alpha.7](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2021-12-29)
+
+
+### Bug Fixes
+
+* first login might fail due to invalid img.src ([89e0a96](https://github.com/EqualMa/weibo-to-mastodon/commit/89e0a96f6cf63e31efeb8ee312441926a8e389df))
+
 # [1.0.0-alpha.6](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2021-12-29)
 
 
