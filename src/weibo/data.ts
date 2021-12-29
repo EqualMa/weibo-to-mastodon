@@ -93,7 +93,7 @@ export class MBlogContent {
     retweeted: MBlog | null;
     pageInfo: input.PageInfo | null;
   }) {
-    const images = pics.map((pic): MBlogImage => ({ url: pic.largest.url }));
+    const images = pics.map((pic): MBlogImage => ({ url: pic.original.url }));
     const bs: { block: MBlogBlock; pos: [number, number] }[] = [];
 
     let mediaCard: MediaCard | null = null;

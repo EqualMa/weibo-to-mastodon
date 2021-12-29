@@ -14,7 +14,11 @@ export interface UrlStruct {
 }
 
 export interface PicInfo {
+  pic_id: string;
   largest: {
+    url: string;
+  };
+  original: {
     url: string;
   };
 }
@@ -50,7 +54,12 @@ export interface MBlog {
   topic_struct?: TopicStruct[];
   url_struct?: UrlStruct[];
   pic_ids?: string[];
-  /** pic_id to info */
+  /**
+   * pic_id to info
+   *
+   * When there are more than 9 images,
+   * `pic_infos` will only contain info of the first 9 images.
+   */
   pic_infos?: Record<string, PicInfo>;
   retweeted_status?: MBlog;
   user: User;
