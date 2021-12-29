@@ -1,3 +1,10 @@
+# [1.0.0-alpha.5](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2021-12-29)
+
+
+### Bug Fixes
+
+* input.MBlog.pic_ids may be undefined ([b3bbe71](https://github.com/EqualMa/weibo-to-mastodon/commit/b3bbe71ecb56ecc3fc3f3bb23a26bf675d434bcf))
+
 # [1.0.0-alpha.4](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2021-12-23)
 
 
