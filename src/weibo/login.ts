@@ -60,7 +60,7 @@ export async function ensureLogin(
 
   const elImg: null | ElementHandle<HTMLImageElement> =
     await ctx.page.waitForXPath(
-      '//*[contains(@class, "LoginPop_mabox")]//img[@src]'
+      '//*[contains(@class, "LoginPop_mabox")]//img[contains(@src, "data=")]'
     );
 
   if (!elImg) {
