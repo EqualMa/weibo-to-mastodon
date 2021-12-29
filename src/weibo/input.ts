@@ -49,7 +49,7 @@ export interface MBlog {
   text_raw: string;
   topic_struct?: TopicStruct[];
   url_struct?: UrlStruct[];
-  pic_ids: string[];
+  pic_ids?: string[];
   /** pic_id to info */
   pic_infos?: Record<string, PicInfo>;
   retweeted_status?: MBlog;

@@ -253,7 +253,9 @@ export class MBlog {
       createdAt: new Date(inputData.created_at),
       content: MBlogContent.fromInput({
         textRaw: inputData.text_raw,
-        pics: inputData.pic_ids.map((pid) => inputData.pic_infos?.[pid]!),
+        pics: (inputData.pic_ids ?? []).map(
+          (pid) => inputData.pic_infos?.[pid]!
+        ),
         topicStructs: inputData.topic_struct || [],
         urlStructs: inputData.url_struct || [],
         retweeted,
