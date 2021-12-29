@@ -1,3 +1,10 @@
+# [1.0.0-alpha.6](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2021-12-29)
+
+
+### Features
+
+* add defaultWeiboLogin cconfig to allow to login to weibo before any operations ([8db2cd6](https://github.com/EqualMa/weibo-to-mastodon/commit/8db2cd65709a02106edd3dfea449b0ba5ba3355f))
+
 # [1.0.0-alpha.5](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2021-12-29)
 
 
