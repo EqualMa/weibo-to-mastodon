@@ -1,3 +1,10 @@
+# [1.0.0-alpha.8](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2021-12-29)
+
+
+### Bug Fixes
+
+* re-fetch mblogs with more than 9 images ([01bb0fe](https://github.com/EqualMa/weibo-to-mastodon/commit/01bb0fe1e424c83b29fc510fa8c4fe4e282590ab))
+
 # [1.0.0-alpha.7](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2021-12-29)
 
 
