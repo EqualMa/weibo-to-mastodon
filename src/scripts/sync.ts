@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
 import * as s from "../setup";
+import { ensureLogin } from "../weibo/login";
 import syncWeiboToMastodon from "../weibo/sync";
 
 async function main() {
-  const { syncList, defaultMastodonBaseUrl, ...config } =
-    await s.resolveConfig();
+  const {
+    //
+    syncList,
+    defaultMastodonBaseUrl,
+    defaultWeiboLogin,
+    ...config
+  } = await s.resolveConfig();
   const globalCtx = await s.setupCtx(config);
 
   const syncs = syncList.map((s, i) => {
@@ -36,6 +42,16 @@ async function main() {
         ...globalCtx,
         uid: weibo.userId,
       });
+
+      if (defaultWeiboLogin) {
+        const user = await ensureLogin(ctx);
+        console.warn(
+          `${prefix} [login] Logged in as ${user.screenName} successfully`
+        );
+      } else {
+        console.warn(`${prefix} [login] skip login`);
+      }
+
       await syncWeiboToMastodon({
         ctx,
         log,

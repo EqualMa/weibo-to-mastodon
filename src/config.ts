@@ -33,6 +33,8 @@ export interface WeiboToMastodonConfig extends SetupCtxConfig {
     };
   }[];
   stopAfterFailed: boolean;
+  /** default to `false` */
+  defaultWeiboLogin: boolean;
 }
 
 export type WeiboToMastodonConfigInput = Partial<WeiboToMastodonConfig>;
@@ -57,6 +59,7 @@ export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
     defaultMastodonBaseUrl,
     syncList = [],
     stopAfterFailed = false,
+    defaultWeiboLogin = false,
   } = json;
 
   const launch = { ..._launch };
@@ -74,6 +77,7 @@ export async function resolveConfig(): Promise<WeiboToMastodonConfig> {
     defaultMastodonBaseUrl,
     syncList,
     stopAfterFailed,
+    defaultWeiboLogin,
   };
 }
 
