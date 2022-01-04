@@ -1,5 +1,6 @@
 import * as input from "./input";
 import * as uu from "./url";
+import * as he from "he";
 
 export class User {
   id: string;
@@ -50,6 +51,8 @@ export interface MediaCard {
 
 export class MBlogContent {
   textRaw: string;
+  textRawEncoded: string;
+
   blocks: MBlogBlock[];
 
   images: MBlogImage[];
@@ -60,26 +63,33 @@ export class MBlogContent {
 
   constructor({
     textRaw,
+    textRawEncoded,
     blocks,
     images,
     retweeted,
     mediaCard,
   }: {
     textRaw: string;
+    textRawEncoded: string;
     blocks: MBlogBlock[];
     images: MBlogImage[];
     retweeted: MBlog | null;
     mediaCard: MediaCard | null;
   }) {
     this.textRaw = textRaw;
+    this.textRawEncoded = textRawEncoded;
     this.blocks = blocks;
     this.images = images;
     this.retweeted = retweeted;
     this.mediaCard = mediaCard;
   }
 
+  static decodeTextRaw(textRaw: string) {
+    return he.decode(textRaw, { strict: true });
+  }
+
   static fromInput({
-    textRaw,
+    textRaw: textRawEncoded,
     topicStructs,
     retweeted,
     urlStructs,
@@ -93,6 +103,8 @@ export class MBlogContent {
     retweeted: MBlog | null;
     pageInfo: input.PageInfo | null;
   }) {
+    const textRaw = this.decodeTextRaw(textRawEncoded);
+
     const images = pics.map((pic): MBlogImage => ({ url: pic.original.url }));
     const bs: { block: MBlogBlock; pos: [number, number] }[] = [];
 
@@ -185,6 +197,7 @@ export class MBlogContent {
 
     return new MBlogContent({
       textRaw,
+      textRawEncoded,
       retweeted,
       blocks,
       images,
