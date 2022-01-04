@@ -1,3 +1,10 @@
+# [1.0.0-alpha.9](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2022-01-04)
+
+
+### Bug Fixes
+
+* weibo mblog input.textRaw should be html decoded ([cb5cfce](https://github.com/EqualMa/weibo-to-mastodon/commit/cb5cfcee3fadd0a738a58e550c2c5b6249baf82f))
+
 # [1.0.0-alpha.8](https://github.com/EqualMa/weibo-to-mastodon/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2021-12-29)
 
 
